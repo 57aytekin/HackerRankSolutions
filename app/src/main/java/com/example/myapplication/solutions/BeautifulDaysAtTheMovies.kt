@@ -17,8 +17,10 @@ fun beautifulDays(i: Int, j: Int, k: Int): Int {
     // Write your code here
     var beautifulCount = 0
     for (number in i .. j){
-        val calculated: Float = (abs(number - number.reverse())) / k.toFloat()
-        if (calculated.rem(1).toDouble() == 0.0){
+        val stringBuilder = StringBuilder()
+        stringBuilder.append(number)
+        val reversed = stringBuilder.reverse().toString().toInt()
+        if ((abs(number - reversed)) % k == 0){
             beautifulCount ++
         }
     }
@@ -37,14 +39,4 @@ fun main() {
     val result = beautifulDays(i, j, k)
 
     println(result)
-}
-
-fun Int.reverse(): Int {
-    var n = this
-    var result = 0
-    while (n > 0) {
-        result = 10 * result + n % 10
-        n = n / 10
-    }
-    return result
 }
